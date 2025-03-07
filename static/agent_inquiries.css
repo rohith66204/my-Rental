@@ -1,0 +1,44 @@
+/* static/agent_inquiries.css */
+.inquiries-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.house-inquiry {
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 2rem;
+}
+
+.inquiries-list {
+    margin-top: 1rem;
+}
+
+.inquiry-item {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.inquiry-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.inquiry-details p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.success-message {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}

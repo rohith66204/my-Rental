@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'house_by_type.css' %}">
+    {% endblock css %}
+
+
+{% block content %}
+<h1>{{ house_type }} ({{ count }})</h1>
+<div class="houses-list">
+    {% for house in houses %}
+        <div class="house-item">
+            <img src="{{ house.image.url }}" alt="{{ house.housename }}">
+            <br><br>
+            <h2>{{ house.housename }}</h2>
+            
+            <p>Price: ₹{{ house.price }}</p>
+            <p>Location: {{ house.location }}</p>
+            <a href="{% url 'myapp:buyon' house.id %}" class="btn btn-primary">View Details</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* General styles */
+.house-details {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.house-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #555;
+}
+
+.details p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Back button styles */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .house-details {
+        padding: 10px;
+    }
+
+    .details h1 {
+        font-size: 2rem;
+    }
+
+    .details p {
+        font-size: 1rem;
+    }
+
+    .back-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div class="house-details">
+    <img src="{{ house.image.url }}" alt="{{ house.housename }}">
+    <div class="details">
+        <h1>{{ house.housename }}</h1>
+        <p><strong>Price:</strong> ₹{{ house.price }}</p>
+        <p><strong>Type:</strong> {{ house.house_type }}</p>
+        <p><strong>Location:</strong> {{ house.location }}</p>
+        <p><strong>Bedrooms:</strong> {{ house.bedrooms }}</p>
+        <p><strong>Bathrooms:</strong> {{ house.bathrooms }}</p>
+        <p><strong>Square Feet:</strong> {{ house.square_feet }}</p>
+        <p><strong>Description:</strong> {{ house.description }}</p>
+        <p><strong>Built Year:</strong> {{ house.built_year }}</p>
+    </div>
+    <!-- Add a back button -->
+    <a href="{% url 'myapp:buy' %}" class="back-btn">Back to Buy</a>
+</div>
+{% endblock %}

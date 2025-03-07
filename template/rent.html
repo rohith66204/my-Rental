@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rental Properties | realtor.com®{% endblock %}
+
+{% block css %}
+     <link rel="stylesheet" href="{% static 'rent.css' %}">
+{% endblock css %}
+
+{% block content %}
+<!-- hero -->
+<div class="hero">
+    <h1>The #1 site real estate <br>
+        professionals trust <sup>*</sup>
+    </h1>
+    <br>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form method="get" action="{% url 'myapp:home' %}">
+            <input type="text" name="location" placeholder="Address, School, City, Zip or Neighbourhood">
+            <button class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+    </div>
+</div>
+<div class="main">
+    <!-- Header -->
+    <div class="head">
+        <h3>Newest listings</h3>
+        <a href="" style="color: black; text-decoration: none;">View all in Hyderabad</a>
+    </div>
+
+    <!-- Grid layout for listings -->
+    <div class="house-grid-container">
+        {% for i in obj %}
+        <div class="house-card">
+            <div class="house-image">
+                <img src="{{ i.image.url }}" alt="{{ i.housename }}">
+            </div>
+            <div class="house-details">
+                <h2><b>{{ i.housename }}</b></h2>
+                <h2><b>Price: ₹{{ i.price }}</b></h2>
+                <p>Type: {{ i.house_type }}</p>
+                <p>Location: {{ i.location }}</p>
+                <a href="{% url 'myapp:buyon' i.id %}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+
+    <!-- middle image(dark) -->
+    <div class="contain">
+        <div class="overlay"></div>
+        <div class="content">
+            <h4>Yes,You Can Rent Out Your Primary Residence-Here's How</h4>
+            <a href="#" class="read-article">Read Article</a>
+        </div>
+    </div>
+</div>
+
+<!-- Ads -->
+<div class="container">
+    <a href="" style="color: black; text-decoration: none; margin-left: 90px;">
+        <div class="card">
+            <img src="../static/buld.jpg" alt="Apartment for rent">
+            <div class="card-content">
+                <div class="badge">Advice/rent</div>
+                <p>Renters Rights: Can HOAs Ban Homeowners From Having Section 8 Tenants?</p>
+            </div>
+        </div>
+    </a>
+    <a href="" style="color:black; text-decoration: none;">
+        <div class="card">
+            <img src="../static/rent.jpg" alt="Apartment fire">
+            <div class="card-content" style="height: 132px;">
+                <div class="badge">Advice/rent</div>
+                <p>Do I Have To Pay Rent After My Apartment Burns Down?</p>
+            </div>
+        </div>
+    </a>
+    <a href="" style="color: black; text-decoration: none;">
+        <div class="card">
+            <img src="../static/ren.jpg" alt="Rental agreement">
+            <div class="card-content">
+                <div class="badge">Advice/rent</div>
+                <p>Managing Rental Properties: The Do's and Don'ts for Landlords</p>
+            </div>
+        </div>
+    </a>
+    <a href="" style="color:black; text-decoration: none;">
+        <div class="card">
+            <img src="../static/re.jpg" alt="Apartment fire">
+            <div class="card-content" style="height: 132px;">
+                <div class="badge">Advice/rent</div>
+                <p>Do I Have To Pay Rent After My Apartment Burns Down?</p>
+            </div>
+        </div>
+    </a>
+</div>
+<br>
+<br>
+<!--     -->
+<div class="container7">
+    <div class="logo1">
+        <a href=""><img src="https://static.rdc.moveaws.com/images/home/nar-logo-2020.svg" alt="NAR Logo"></a>
+        <p style="color: gray;">Find out how the NAR works for consumers and REALTORS®</p>
+    </div>
+    <div class="column">
+        <h5><b>Learn About N.A.R</b></h5>
+        <ul>
+            <li><a href="#">About NAR</a></li>
+            <li><a href="#">Agent vs. REALTOR®</a></li>
+            <li><a href="#">Find an Appraiser</a></li>
+            <li><a href="#">Commercial Services</a></li>
+            <li><a href="#">NAR Global Alliances</a></li>
+        </ul>
+    </div>
+    <div class="column">
+        <h5><b>For Homeowners</b></h5>
+        <ul>
+            <li><a href="#">Look for the R</a></li>
+            <li><a href="#">First-Time Buyer</a></li>
+            <li><a href="#">Real Estate Today</a></li>
+            <li><a href="#">Reasons to work with a REALTOR®</a></li>
+        </ul>
+    </div>
+    <div class="column">
+        <h5><b>For REALTORS®</b></h5>
+        <ul>
+            <li><a href="#">Stand out and drive more leads with your free .realtor™ website!</a></li>
+            <li><a href="#">2026 NAR Leadership Academy: Applications close 2/13</a></li>
+            <li><a href="#">Make safety your priority in 2025</a></li>
+            <li><a href="#">Share your volunteer story and inspire others!</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+
+</html>

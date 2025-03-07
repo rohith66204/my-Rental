@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ property_type|title }} Properties ({{ property_count }})</h1>
+<div class="properties-grid">
+    {% for property in properties %}
+    <div class="property-card">
+        <img src="{{ property.image.url }}" alt="{{ property.housename }}">
+        <h3>{{ property.housename }}</h3>
+        <p>{{ property.location }}</p>
+        <p>Price: ${{ property.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

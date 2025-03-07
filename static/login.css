@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .welcome-section, .login-section {
+    padding: 40px;
+  }
+  
+  .welcome-section {
+    flex: 1;
+    text-align: center;
+    background-color: #fdfdfd;
+    border-right: 1px solid #eee;
+  }
+  
+  .welcome-section h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-section p {
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  .illustration {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .real-estate-professional {
+    background-color: rgb(240, 235, 235);
+    width: 65%;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 50px;
+    font-size: 16px;
+    font-weight: 800;
+    align-items: center;
+  }
+  #reals{
+    font-weight:700;
+  }
+  .real-estate-professional a {
+    color: black;
+    text-decoration: underline;
+    font-weight: 100;
+
+  }
+  
+  .login-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    height: 23px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+  
+  .password-group {
+    position: relative;
+  }
+  
+  .show-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+  }
+  
+  .forgot-password {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: right;
+    display: block;
+  }
+  
+  .login-button {
+    width: 100%;
+    height: 43px;
+    padding: 12px;
+    font-size: 20px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .signup {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signup a {
+    border-radius: 20px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #888;
+    position: relative;
+  }
+  
+  .divider:before,
+  .divider:after {
+    content: '';
+    width: 40%;
+    height: 1px;
+    background: #ccc;
+    position: absolute;
+    top: 50%;
+  }
+  
+  .divider:before {
+    left: 5%;
+  }
+  
+  .divider:after {
+    right: 5%;
+  }
+  
+  .social-login {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .social-login.google {
+    border-radius: 20px;
+    background: #fff;
+    color: #000;
+  }
+  
+  .social-login.facebook {
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+  }
+  
+  .social-login.apple {
+    border-radius: 20px;
+    color: #000;
+    background-color: #fff;
+  }

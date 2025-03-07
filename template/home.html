@@ -1,0 +1,747 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Rental Properties | realtor.com®{% endblock %}
+
+{% block content %}
+<style>
+    /* General Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden; /* Prevent horizontal scrollbar */
+    }
+
+    body {
+        background-image: url('{% static "your-background-image.jpg" %}'); /* Add your background image path here */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Ensures the background image stays fixed while scrolling */
+        text-align: center;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 15px;
+        text-align: center;
+        border: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .search-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-bar input {
+        
+        width: 530px;
+        height: 43px;
+        /* border: 1px solid #ccc; */
+        border-radius: 15px;
+        outline: none;
+        border: none;
+    }
+
+    .search-bar button {
+        padding: 15px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 0px,0px,5px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    /* Grid Layout */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Card Styles */
+    .card {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* Category Name */
+    .card-title {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    /* Count Badge */
+    .count-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 3px 8px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Additional Styles for Other Sections */
+    .container4 {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .background-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .text-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+    }
+
+    .text-overlay h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .text-overlay p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .text-overlay .button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .container7, .container8 {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 20px;
+    }
+
+    .column, .column1 {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    .column h5, .column1 h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .column ul, .column1 ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .column ul li, .column1 ul li {
+        margin-bottom: 5px;
+    }
+
+    .column ul li a, .column1 ul li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .column ul li a:hover, .column1 ul li a:hover {
+        text-decoration: underline;
+    }
+
+    /* Button Tags */
+    #button_tags {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .buttons {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+    }
+
+    .buttons:hover {
+        background-color: #0056b3;
+    }
+
+    /* Buying, Renting, Selling Sections */
+    #buying-text, #renting-text, #selling-text {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0;
+    }
+
+    #firstbuying, #secondbuying, #thirdbuying,
+    #firstrenting, #secondrenting, #thirdrenting,
+    #firstselling, #secondselling, #thirdselling {
+        width: 30%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .icons {
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+    }
+
+    /* Recommended Cities */
+    .names {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0;
+    }
+
+    .names iframe {
+        width: 100%;
+        height: 200px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .names h2 {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .names p {
+        font-size: 1rem;
+        margin: 5px 0;
+    }
+
+    /* Footer Styles */
+    .logo1 img {
+        width: 150px;
+        height: auto;
+    }
+
+    .logo1 p {
+        color: gray;
+        font-size: 0.9rem;
+    }
+
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Ensure the body and html take up the full height and width */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+        }
+
+        /* Full-width image container */
+        .full-width-container {
+            width: 100%;
+            height: 550px; /* Fixed height */
+            position: relative; /* For positioning the text overlay */
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        /* Full-width image */
+        .full-width-image {
+            width: 100%;
+            height: 100%; /* Fill the container height */
+            object-fit: cover; /* Ensure the image covers the container without distortion */
+            display: block; /* Remove any inline spacing */
+        }
+
+        /* Optional: Add a text overlay */
+        .text-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-overlay h2 {
+            font-size: 2.5rem;
+            margin-top: 150px;
+            margin-bottom: 10px;
+        }
+
+        .text-overlay p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .text-overlay .button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .container7 {
+            width: 100%;
+            height: 300px;
+            font-size: 27px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background color */
+        }
+
+        /* Logo section */
+        .logo1 {
+            width: 700px; /* Adjust width as needed */
+        }
+
+        .logo1 img {
+            height: 90px; /* Adjust logo height */
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .logo1 p {
+            color: gray;
+            font-size: 16px;
+            margin: 0;
+            text-align: left;
+            margin-left: 100px;
+        }
+
+        /* Columns for links */
+        .column {
+            width: 200px; /* Adjust width as needed */
+            margin-top: 20px; /* Add 10px space on top of the columns */
+            text-align: left;
+        }
+
+        .column h5 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333; /* Dark text color */
+        }
+
+        .column ul {
+            list-style: none;
+            padding: 0;
+            font-size: 15px; /* Smaller font size for links */
+        }
+
+        .column ul li {
+            margin-bottom: 8px;
+        }
+
+        .column ul li a {
+            text-decoration: none;
+            color: #007BFF; /* Blue link color */
+        }
+
+        .column ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+</style>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>The #1 site real estate <br>
+        professionals trust <sup>*</sup>
+    </h1>
+    <br>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form method="get" action="{% url 'myapp:home' %}">
+            <input type="text" name="location" placeholder="Address, School, City, Zip or Neighbourhood">
+            <button class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+    </div>
+</div>
+<br><br>
+<!-- Property Categories Grid -->
+{% load static %}
+
+<div class="container">
+    <div class="container1">
+        <div class="text-center" style="max-width: 600px;">
+            <h1 class="heading">Browse homes in Hyderabad</h1>
+            <br><br>
+        </div>
+        <div class="grid-container">
+            {% for house_type in house_type_counts %}
+                <a href="{% url 'myapp:houses_by_type' house_type=house_type.type %}" class="card">
+                    <img src="{% static 'images/' %}{{ house_type.image }}" alt="{{ house_type.display_name }}">
+                    <div class="card-title">{{ house_type.display_name }}</div>
+                    <div class="count-badge">{{ house_type.count }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Rest of your content remains unchanged -->
+<!-- ... -->
+<br>
+<h1>Discover how we can help</h1>
+
+<div id="button_tags">
+    <button class="buttons" id="buying-btn">Buying</button>
+    <button class="buttons" id="renting-btn">Renting</button>
+    <button class="buttons" id="selling-btn">Selling</button><br><br>
+</div>
+<div  id="buying-text" style="display:flex;justify-content: space-evenly;">
+    <div style="width:300px;height:290px;border-radius: 10px;" id="firstbuying">
+        <div class="i">
+            <img style="width:100px;height:100px" class="icons" src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-badge-cash-reward.svg" alt="">
+        </div><br>
+        <div class="p"><h3>Find out how much you can afford</h3><br>
+            <p>We'll help you estimate your budget range. Save to your buyer profile to help in your search.</p>
+            <b><a href="" style="color: black;">Try our affordability calculator</a></b>
+        </div>
+        
+    </div>
+
+    <div style="width:300px;height:290px;border-radius: 10px;" id="secondbuying">
+        <div class="i">
+            <img style="width:100px;height:80px" src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-calculator.svg" alt="" class="icons">
+        </div><br>
+            <div class="p"><h3>Understand your monthly costs</h3><br>
+            <p>Get an in-depth look at what your monthly and closing costs will look like based on your financial situation and goals.</p>
+            <b><a href="" style="color: black;">Try our mortgage calculator</a></b>
+        </div>
+        
+    </div>
+    <div style="width:400px;height:290px;border-radius: 10px;" id="thirdbuying">
+        <div class="i">
+            <img style="width:100px;height:100px" src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-money-stack.svg" alt="" class="icons">
+        </div>
+        <div style="width: 280px;" class="p"><h3>Get help with your down payment</h3><br>
+            <p>You may be able to buy a home with just 3.5% down. Saving for that can be challenging-down payment assistance programs can help.</p>
+            <b><a href="" style="color: black;">Find down payment help</a></b>
+        </div>
+        
+    </div>
+</div>
+<div id="renting-text" style=" display:none; ">
+    <div id="firstrenting">
+        <div class="i"> 
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-arrows.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Find out if it's better to rent or buy</h3><br>
+            <p>Try our rent or buy calculator to determine if buying or renting a home makes more financial sense for your situation</p>
+            <b><a href="" style="color: black;">Try our rent or buy calculator</a></b>
+        </div>
+        
+    </div>
+    <div id="secondrenting">
+        <div class="i">
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-claim-home.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Search for nearby opportunities</h3><br>
+            <p>Get an in-depth look at what your monthly and closing costs will look like based on your financial situation and goals.</p>
+            <b><a href="" style="color: black;">Try our mortgage calculator</a></b>
+        </div>
+        
+    </div>
+    <div id="thirdrenting">
+        <div class="i">
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-condo.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Get help with your down payment</h3><br>
+            <p>You may be able to buy a home with just 3.5% down. Saving for that can be challenging-down payment assistance programs can help.</p>
+            <b><a href="" style="color: black;">Find down payment help</a></b>
+        </div>
+        
+    </div>
+</div>
+<div id="selling-text" style="display: none;">
+    <div id="firstselling">
+        <div>
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-pending.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Buy now, sell later</h3><br>
+            <p>Skip the repairs and showings. Our partners can help you buy your new home first, then sell your old one.</p>
+            <b><a href="" style="color: black;">Search options from your partners</a></b>
+        </div>
+        
+    </div>
+    <div id="secondselling">
+        <div class="i">
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-property-making-an-offer.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Track your home value</h3><br>
+            <p>See your RealEstimate℠ valuation information over time compared to homes in your area.</p>
+            <b><a href="" style="color: black;">Get your RealEstimate℠</a></b>
+        </div>
+        
+    </div>
+    <div id="thirdselling">
+        <div class="i">
+            <img src="https://static.rdc.moveaws.com/rdc-ui/spots/spot-sell.svg" alt="" class="icons">
+        </div><br>
+        <div class="p"><h3>Get offers for your home</h3><br>
+            <p>Visit Seller's Marketplace to find out how you can sell without listing or stay in your home while you finance the purchase of your next one.</p>
+            <b><a href="" style="color: black;">Explor my offers</a></b>
+        </div>
+        
+    </div>
+</div>
+<br>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("buying-btn").addEventListener("click", function () {
+        showSection("buying-text");
+    });
+
+    document.getElementById("renting-btn").addEventListener("click", function () {
+        showSection("renting-text");
+    });
+
+    document.getElementById("selling-btn").addEventListener("click", function () {
+        showSection("selling-text");
+    });
+
+    function showSection(sectionId) {
+        let sections = ["buying-text", "renting-text", "selling-text"];
+        sections.forEach((id) => {
+            document.getElementById(id).style.display = id === sectionId ? "flex" : "none";
+        });
+    }
+});
+
+</script>
+<div>
+    <h2>Recommended cities</h2>
+    <p>Based on your previous search</p>
+</div>
+<br>
+<div class="names" style="display:flex;justify-content: space-evenly;">
+    <div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30452.86328122849!2d78.38917188607533!3d17.43059434167192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb96cc62a87613%3A0xa8317fa22362be49!2sJubilee%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1740112817290!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+        <div>
+            <h2>Jubilee Hills</h2>
+            <p><b>18 </b>Listings for sale</p>
+            <p><b>$ 560,000</b> <br>Median Listing Home Price</p>
+        </div>
+    </div>
+    <div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15227.654320940077!2d78.42548725524654!3d17.415934485615576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9728e7c230a5%3A0xbf59752f5f7caa0!2sBanjara%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1740112780824!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+        <div>
+            <h2>Banjara Hills</h2>
+            <p><b>45 </b>Listings for sale</p>
+            <p><b>$ 445,900</b> <br>Median Listing Home Price</p>
+        </div>
+    </div>
+    <div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15224.999278678803!2d78.36621960525741!3d17.447753085193746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8c5d69df%3A0x19688beb557fa0ee!2sHITEC%20City%2C%20Hyderabad%2C%20Telangana%20500081!5e0!3m2!1sen!2sin!4v1740112727220!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+        </div>
+        <div>
+            <h2>HITEC City</h2>
+            <p><b>21 </b>Listings for sale</p>
+            <p><b>$ 369,500</b> <br>Median Listing Home Price</p>
+        </div>
+    </div>
+    <div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36880.50880123509!2d78.31767071355823!3d17.44286704755219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a276decedf%3A0x2c12e79e6f9344e2!2sGachibowli%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1740112520370!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div>
+            <h2>Gachibowli</h2>
+            <p><b>17 </b>Listings for sale</p>
+            <p><b>$ 599,900</b> <br>Median Listing Home Price</p>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="full-width-container">
+    <img class="full-width-image" src="../static/pexels-freestockpro-1227513.jpg" alt="Full Width Image">
+    <!-- Optional text overlay -->
+    <div class="text-overlay">
+        <h2>Unique Homes</h2>
+        <p>Futuristic $21 Million Concrete Beach Fortress Designed to Withstand the Elements</p>
+        <a href="#" class="button">Read Article</a>
+    </div>
+</div>
+<br>
+<div style="display:flex">
+    <div style="width:840px;height:400px;overflow: hidden; position: relative;"><img style="width:840px;height:400px; object-fit: cover;" data-src="https://static.rdc.moveaws.com/images/hero/hp-hero-mortgage-desktop-cube.jpg" data-testid="picture-img" alt="" src="https://static.rdc.moveaws.com/images/hero/hp-hero-mortgage-desktop-cube.jpg" decoding="async" loading="lazy"></div>
+    <div style="text-align: left;margin-top:200px;margin-left:60px;">
+        <h2><b>Need a home loan?Get pre-Approved</b></h2>
+        <br>
+        <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Find a lender who can offer competitive mortage rates aroundhelp you with pre-approval</p>
+        <br>
+        <button style="background-color: black;color:white;height:40px">Get pre-approved now</button><br><br><br>
+        <p style="text-decoration: underline;font-family: Arial, Helvetica, sans-serif;">advertising Disclourse</p>
+    </div>
+</div>
+<div style="display:flex">
+    <div style="text-align: left; margin-top:100px; margin-left: 100px;">
+        <h2><b>Get Local Info</b></h2>
+        <pre style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Does it have pet-friendly rentals?how are the
+    chools?Get important local information on the area 
+    you're most interested in.
+        </pre>
+        <div style="margin-left:1px" class="search-bar">
+            <input type="text" placeholder="Address,School,City,Zip or Neighbourhood">
+            <button class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </div>
+    <div style="width:1000px;height:400px;overflow: hidden; position: relative; margin-left: 108px;"><img style="width:100%;height:500px; object-fit: cover;object-position: center bottom; " data-src="https://static.rdc.moveaws.com/images/hero/hp-local-desktop-cube.jpg" data-testid="picture-img" alt="" src="https://static.rdc.moveaws.com/images/hero/hp-local-desktop-cube.jpg" decoding="async" loading="lazy"></div>
+</div>
+<hr>
+<div class="container7">
+    <!-- Logo Section -->
+    <div class="logo1">
+        <a href=""><img src="https://static.rdc.moveaws.com/images/home/nar-logo-2020.svg" alt="NAR Logo"></a>
+        <p style="color: gray;">Find out how the NAR works for consumers and REALTORS®</p>
+    </div>
+
+    <!-- Column 1: Learn About N.A.R -->
+    <div class="column">
+        <h5><b>Learn About N.A.R</b></h5>
+        <ul>
+            <li><a href="#">About NAR</a></li>
+            <li><a href="#">Agent vs. REALTOR®</a></li>
+            <li><a href="#">Find an Appraiser</a></li>
+            <li><a href="#">Commercial Services</a></li>
+            <li><a href="#">NAR Global Alliances</a></li>
+        </ul>
+    </div>
+
+    <!-- Column 2: For Homeowners -->
+    <div class="column">
+        <h5><b>For Homeowners</b></h5>
+        <ul>
+            <li><a href="#">Look for the R</a></li>
+            <li><a href="#">First-Time Buyer</a></li>
+            <li><a href="#">Real Estate Today</a></li>
+            <li><a href="#">Reasons to work with a REALTOR®</a></li>
+        </ul>
+    </div>
+
+    <!-- Column 3: For REALTORS® -->
+    <div class="column">
+        <h5><b>For REALTORS®</b></h5>
+        <ul>
+            <li><a href="#">Stand out and drive more leads with your free .realtor™ website!</a></li>
+            <li><a href="#">2026 NAR Leadership Academy: Applications close 2/13</a></li>
+            <li><a href="#">Make safety your priority in 2025</a></li>
+            <li><a href="#">Share your volunteer story and inspire others!</a></li>
+        </ul>
+    </div>
+</div>
+<hr><br>
+<br>
+<div class="container8" style="display:flex;justify-content: space-evenly; text-align: left;">
+    <div class="column1" style=" margin-left: 90px;">
+        <h3>Popular real estate markets</h3>
+        <ul>
+            <li><a style="text-decoration: none;color:black" href="#">The Villages, FL real estate</a></li>
+        </ul>
+        <a href="https://example.com/real-estate-markets">See more</a>
+    </div>
+    <div class="column1">
+        <h3>Popular apartment cities</h3>
+        <ul>
+            <li><a style="text-decoration: none;color:black;" href="#">Apartments for rent in Manhattan, NY</a></li>
+        </ul>
+        <a href="https://example.com/apartment-cities">See more</a>
+    </div>
+    <div class="column1">
+        <h3>Popular resources</h3>
+        <ul>
+            <li><a style="text-decoration: none;color:black" href="#">Homes for sale near me</a></li>
+        </ul>
+        <a href="https://example.com/resources">See more</a>
+    </div>
+    <div class="column1">
+        <h3>New listings by state</h3>
+        <ul>
+            <li><a style="text-decoration: none;color:black" href="#">Alabama new listings</a></li>
+        </ul>
+        <a href="https://example.com/new-listings">See more</a>
+    </div>
+</div>
+<br><br><br><br>
+
+<script src="{% static 'rental.js' %}"></script>
+{% endblock %}
