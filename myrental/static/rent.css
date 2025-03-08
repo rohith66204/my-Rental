@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+  }
+    
+  .navbar .logo {
+    font-size: 30px;
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+  }
+    
+  .nav-links li {
+    margin: 0 15px;
+  }
+    
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+    
+  .auth-links a {
+    margin-left: 15px;
+    padding: 8px 15px;
+  }
+  .hero{
+    background: url(../static/hp-hero-desktop-xl.webp) no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  .hero h1{
+    font-size: 60px;
+    bottom: 200px;
+  }
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .search-bar input {
+    border: none;
+    width: 500px;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 25px;
+    margin-right: 10px;
+  }
+    
+  .search-bar button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0px,0px,15px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 55px;
+  }
+    
+  .search-bar button:hover {
+    background-color: #333;
+  }
+    
+  .search-icon {
+    font-size: 18px;
+  }
+  .head{
+    margin: 20px 0px 20px 10px;
+  }
+  .matter{
+    padding: 6px;
+  }
+  .img{
+    width: 30%;
+    border-radius: 10px;
+    margin: 10px;
+  }
+  .contain{
+    position: relative;
+    width: 124.89%;
+    height: 500px;
+    background: url(https://na.rdcpix.com/2eb240636ba52f920aea14fee15fab90w-c3260774204srd_q80.jpg) no-repeat center center/cover;; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-left: -12.5%;
+  }
+  .content {
+    position: relative;
+    z-index: 1;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+  .read-article{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  .container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px   rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+  .badge {
+    background: #2962ff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: inline-flex;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .card h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  .container5 {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .image-section {
+    flex: 1;
+    background-image: url('../static/img/need\ home\ loan.avif');
+    background-size: cover;
+    background-position: center;
+  }
+  .text-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .text-section h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .text-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .text-section .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .text-section a {
+    font-size: 14px;
+    color: gray;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  .container6{
+    display: flex;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .info {
+    padding: 20px;
+  }
+  .info h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .info p {
+    margin: 10px 0;
+    color: #555;
+  }
+  .info .search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid black;
+  }
+  .info .search-bar input {
+    width: 50%;
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 25px;
+    margin-right: 10px;
+  }
+  .info .search-bar .button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .image {
+    position: relative;
+    width: 95%;
+    height: 300px;
+    background-image: url('../static/img/get\ local\ info.avif');
+    background-size: cover;
+    background-position: center;
+  }
+  .container7 {
+    padding: none;
+    margin: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .logo1 {
+    flex: 1;
+    margin-left: 40px;
+    font-size: 15px;
+  }
+  .logo1 img {
+    width: 200px;
+    margin-left: 15px;
+  }
+  .column {
+    flex: 1;
+    margin-left: 40px;
+    color: black;
+    display: inline-block;
+  }
+  .column h5 {
+    /* font-size: 13px; */
+    margin-bottom: 20px;
+    color: black;
+  }
+  .column ul {
+    /* list-style: none; */
+    padding: 0;
+    color: black;
+  }
+  .column ul li {
+    margin-bottom: 20px;
+    color: black;
+  }
+  .column ul li a {
+    text-decoration: underline;
+    color: black;
+  }
+  .container8 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0px;
+    border: none;
+  }
+  .column1 {
+    /* border: 1px solid #ddd;
+    border-radius: 5px; */
+    padding: 15px;
+    width: 250px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .column1 h3 {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .column1 a {
+    text-decoration: none;
+    color: black;
+  }
+  .column1 a:hover {
+    text-decoration:underline;
+  }
+
+
+  /* 112 */
+  .main {
+    width: 100%;
+    max-width: 1200px; /* Limit the width for larger screens */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+/* Header section */
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.head h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.head a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.head a:hover {
+    text-decoration: underline;
+}
+
+/* Grid layout for listings */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+}
+
+@media (max-width: 1024px) {
+  .listings-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .listings-grid {
+      grid-template-columns: repeat(1, 1fr); /* 1 per row on mobile */
+  }
+}
+
+/* Individual listing */
+/* General Styles */
+/* Listings Grid Container */
+.listings-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align items to the start */
+  gap: 30px; /* Space between cards */
+  padding: 30px; /* Maintain padding */
+  max-width: 1800px; /* Adjust for wider grids */
+  margin: 0 auto;
+}
+
+/* Listing Card */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.listing {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers all content inside the listing */
+  text-align: center;
+}
+
+.listing:hover {
+  transform: scale(1.05);
+}
+
+.listing img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.listing div {
+  padding: 10px;
+}
+
+.listing h2 {
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+}
+
+.listing p {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.btn-primary {
+  width: fit-content;
+  margin: 10px auto;
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.house-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.house-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.house-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.house-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.house-details {
+  padding: 20px;
+  text-align: center;
+}
+
+.house-details h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.house-details p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.house-details .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.house-details .btn:hover {
+  background-color: #0056b3;
+}

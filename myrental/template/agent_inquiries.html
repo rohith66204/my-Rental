@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'agent_inquiries.css' %}">
+    {% endblock css %}
+{% block content %}
+<div class="inquiries-container">
+    <h1>Your Property Inquiries</h1>
+    
+    {% for house, inquiries in inquiries_by_house.items %}
+    <div class="house-inquiry">
+        <h2>{{ house.housename }} ({{ house.location }})</h2>
+        
+        <div class="inquiries-list">
+            {% for inquiry in inquiries %}
+            <div class="inquiry-item">
+                <div class="inquiry-header">
+                    <span class="name">{{ inquiry.name }}</span>
+                    <span class="date">{{ inquiry.submitted_at|date:"M d, Y H:i" }}</span>
+                </div>
+                <div class="inquiry-details">
+                    <p>Phone: {{ inquiry.mobile }}</p>
+                    <p>Email: <a href="mailto:{{ inquiry.email }}">{{ inquiry.email }}</a></p>
+                    <p>Message: {{ inquiry.message }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No inquiries found for your properties.</p>
+    {% endfor %}
+</div>
+{% endblock %}

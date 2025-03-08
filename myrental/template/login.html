@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="{% static 'login.css'%}">
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-section">
+      <h1>Welcome back</h1>
+      <p>Log in to see the latest on Realtor.com</p>
+      <img src="../static/auth-success.svg" alt="Illustration" class="illustration">
+      <div class="real-estate-professional">
+
+        <span id="reals">Are you a real estate professional? </span>
+        <br>
+        <a href="#">Log in here</a>
+      </div>
+      
+    </div>
+    
+    <div class="login-section">
+      <h2>Log in</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <a href="#" class="forgot-password">Forgot password?</a>
+        <button type="submit" class="login-button">Log in</button>
+        <div class="signup">
+          <span>Don't have an account? </span>
+          <a href="{% url 'myapp:sigin' %}">Sign up</a>
+        </div>
+        <div class="divider">OR</div>
+        <button class="social-login google">Continue with Google</button>
+        <button class="social-login facebook">Continue with Facebook</button>
+        <button class="social-login apple">Continue with Apple</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

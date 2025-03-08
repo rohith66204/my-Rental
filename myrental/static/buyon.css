@@ -1,0 +1,371 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+header .logo h1 {
+    font-size: 2.5rem;
+}
+
+/* Main Container */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* House Detail Section */
+.house-detail {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Main House Image */
+.main-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.main-house-image {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* House Information */
+.house-info {
+    color: #000;
+    margin-top: 20px;
+}
+
+.house-info h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.house-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Additional Information Section */
+.additional-info {
+    margin-top: 30px;
+}
+
+.additional-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.image-item {
+    position: relative;
+    width: calc(33% - 10px);
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+.house-room-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.image-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* Property History */
+ul {
+    list-style-type: none;
+    color: #000;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-gallery {
+        flex-direction: column;
+    }
+
+    .image-item {
+        width: 100%;
+    }
+
+    .house-room-image {
+        height: 200px;
+    }
+}
+
+.thank-you-box {
+    display: none;
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.success-message {
+    background: #f8f9fa;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.success-message h3 {
+    color: #28a745;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.success-message p {
+    color: #333;
+    margin: 0.8rem 0;
+    line-height: 1.5;
+}
+
+.price-highlight {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    display: block;
+}
+
+.contact-note {
+    font-size: 0.9rem;
+    color: #666;
+}
+/* Add this to your buyon.css or existing CSS */
+.contact-agent-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.contact-agent-form h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.email-agent-btn {
+    background: #27ae60;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.email-agent-btn:hover {
+    background: #219a52;
+}
+
+/* Error message styling */
+.errorlist {
+    color: #e74c3c;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    list-style: none;
+}
+
+.errorlist li {
+    font-size: 0.9rem;
+}
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.email-agent-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.email-agent-btn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+    }
+}

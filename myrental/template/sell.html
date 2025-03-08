@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'sty.css'%}">
+{% endblock css %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h2 style="font-weight:800; font-size: 60px;">Get free proposals from local agents</h1>
+            <hr>
+        <p style="font-size: 30px;">Find a trusted expert, no obligations.</p>
+        
+    </div>
+</section>
+
+<div>
+    <div class="forms">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+    
+            <h3>Usage History</h3>
+            <div id="usage-history">
+                <div class="usage-entry">
+                    <input type="text" name="user" placeholder="User Name" required>
+                    <input type="number" name="starting_year" placeholder="Starting Year" required>
+                    <input type="number" name="ending_year" placeholder="Ending Year" required>
+                    <input type="number" name="price" placeholder="Price Paid" required>
+                    <button type="button" class="remove-usage">Remove</button>
+                </div>
+            </div>
+            <button type="button" id="add-usage">Add Another User</button>
+    
+            <button type="submit">Submit</button>
+        </form>
+    
+        <script>
+            // Add a new usage entry
+            document.getElementById('add-usage').addEventListener('click', function() {
+                const newEntry = document.createElement('div');
+                newEntry.className = 'usage-entry';
+                newEntry.innerHTML = `
+                    <input type="text" name="user" placeholder="User Name" required>
+                    <input type="number" name="starting_year" placeholder="Starting Year" required>
+                    <input type="number" name="ending_year" placeholder="Ending Year" required>
+                    <input type="number" name="price" placeholder="Price Paid" required>
+                    <button type="button" class="remove-usage">Remove</button>
+                `;
+                document.getElementById('usage-history').appendChild(newEntry);
+            });
+    
+            // Remove a usage entry
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-usage')) {
+                    event.target.parentElement.remove();
+                }
+            });
+        </script>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="card">
+        <img src="../static/1.svg" alt="Agent">
+        <p class="real"><span style="color: red;">Real</span>Choice™ Selling</h2></p>
+        <h2>Pick the right agent for you</h2>
+        <p>Answer a few questions and get a list of top agents in your area. Compare their costs and services, and choose the right agent for you.</p>
+        <button class="button">Get Started</button>
+    </div>
+
+    <div class="card">
+        <img src="../static/2.svg" alt="Offers">
+        <p class="real">Seller's Marketplace</p>
+        <h2>Get offers for your home</h2>
+        <p>Visit Seller’s Marketplace to find out how you can sell without listing or stay in your home while you finance the purchase of your next one. </p>
+        <button class="button" id="visit">Visit Seller's Marketplace</button>
+    </div>
+
+    <div class="card">
+        <img src="../static/3.svg" alt="Home Value">
+        <p class="real"><span style="color: red;">Real</span>Estimate™</p>
+        <h2>Track your home value</h2>
+        <p>See your RealEstimate℠ valuation information over time compared to homes in your area.</p>
+        <input type="text" placeholder="Enter home address" id="inputs">
+        <button class="button" id="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1l.001-.001a6.5 6.5 0 0 0-1.4 1.4zM6.5 12a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="looking">
+    <p><b>Looking for a local agent?</b>Browse reviews and ratings in our <span class="button-text">Find a REALTOR© directory</span></p>
+</div>
+<section>
+    <div class="container">
+        <div class="section">
+            <img src="../static/4.svg" alt="House illustration" id="house">
+            <div class="section-content">
+                <h2>Find out how much home equity you can use</h2>
+                <p>If you're looking to fund a home renovation project or a down payment on a new place, the equity in your home could help. Connect with a lender to see if you qualify.</p>
+                <a href="#" class="btn">Connect with a lender</a>
+                <a href="#" class="rate-link">Latest home equity rates</a>
+                <p class="disclosure"><a href="#">Advertising disclosure</a></p>
+            </div>
+        </div>
+    </div>
+</section>          
+
+<div class="container">
+    <div class="seller-guides">
+        <div class="guide" data-title="Should I sell my home now?">
+            <img src="../static/5.svg" alt="Icon">
+            <br>
+            <a href="#" id="guide">Should I sell my home now?</a>
+        </div>
+        <div class="guide" data-title="How much is my home worth?">
+            <img src="../static/6.svg" alt="Icon"><br>
+            <a href="#" id="guide">How much is my home worth?</a>
+        </div>
+        <div class="guide" data-title="How should I sell my home?">
+            <img src="../static/7.svg" alt="Icon"><br>
+            <a href="#" id="guide">How should I sell my home?</a>
+        </div>
+        <div class="guide" data-title="How to prepare your home for sale?">
+            <img src="../static/8.svg" alt="Icon"><br>
+            <a href="#" id="guide">How to prepare your home for sale?</a>
+        </div>
+    </div>
+</div>
+
+<div class="containerr">
+    <h1>Seller tools</h1>
+    <p>Track your home value with<a href="#" class="lastl">My Home</a></p>
+    <p>Explore your selling options in the<a href="#" class="lasts">Seller’s Marketplace</a></p>
+    <p>Find an agent<a href="#" class="lastt">to list your home</a></p>
+    
+</div>
+
+
+<script src="{% static 'rental.js' %}"></script>
+{% endblock %}

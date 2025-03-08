@@ -1,0 +1,39 @@
+{% extends 'base.html' %}  <!-- Extend your base template if available -->
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'saved.css' %}">
+    {% endblock css %}
+{% block content %}
+    <h1>Saved Items</h1>
+
+    {% if items %}
+        <div class="saved-items-container">
+            {% for item in items %}
+                <div class="saved-item">
+                    <div class="saved-item-image">
+                        <img src="{{ item.house.image.url }}" alt="{{ item.house.housename }}">
+                    </div>
+                    <div class="saved-item-details">
+                        <h2><b>{{ item.house.housename }}</b></h2>
+                        <h2><b>{{ item.house.price }}</b></h2>
+                        <p>{{ item.house.house_type }}</p>
+                        <p>{{ item.house.location }}</p>
+
+                        <!-- View Details Button -->
+                        <a href="{% url 'myapp:buyon' item.house.id %}" class="view-details-btn">View Details</a>
+
+                        <!-- Remove Button -->
+                        <form action="{% url 'myapp:save_item' item.house.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="remove-btn">❌ Remove</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No saved items yet.</p>
+    {% endif %}
+<br><br><br><br><br>
+{% endblock %}

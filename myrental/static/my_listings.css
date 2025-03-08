@@ -1,0 +1,132 @@
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 25px; /* Space between listings */
+    padding: 25px;
+}
+
+.listing {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+}
+
+.listing img {
+    width: 290px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.listing ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.listing h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.listing p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Button container to center the button */
+.btn-container {
+    display: flex;
+    justify-content: center; /* Centers the button */
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .listings-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .listings-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 per row on mobile */
+    }
+}
+/* my_listings.css */
+/* Remove button styling */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px; /* Adds space between View Details and Remove buttons */
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Align buttons properly in the container */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Ensures consistent spacing between buttons */
+    margin-top: 10px;
+}
+
+/* Adjust form display to inline for button alignment */
+.btn-container form {
+    display: inline-block;
+    margin: 0;
+}
+/* Header section with My Listings and View Inquiries button aligned */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Places My Listings and button on opposite sides */
+    align-items: center;
+    padding: 20px;
+}
+
+/* Styling for the View Inquiries button */
+.view-inquiries-btn {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-inquiries-btn:hover {
+    background-color: #138496;
+}

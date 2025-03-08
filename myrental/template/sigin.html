@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="{% static 'signup.css'%}">
+</head>
+<body>
+    <div class="container">
+        <div class="info-section">
+            <h1>Search better with an account</h1>
+            <div class="info-item">
+                <img src="../static/spot-listing-save.svg" alt="Save Listings">
+                <div>
+                    <h3>Save listings you love</h3>
+                    <p>Keep an eye on your favorite homes.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="../static/spot-browse.svg" alt="Save Searches">
+                <div>
+                    <h3>Save your searches</h3>
+                    <p>Get alerts for homes that are perfect for you.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="../static/spot-phone-home.svg" alt="Search Anywhere">
+                <div>
+                    <h3>Search from anywhere</h3>
+                    <p>Access your search across all your devices.</p>
+                </div>
+            </div>
+            <div class="info-item" id="info-item">
+                <img src="../static/spot-agent.svg" alt="Search Anywhere" id="agent">
+                <div>
+                    <h3>Are you a real estate professional?</h3>
+                    <a href="#" id="log">Log in here</a>
+                </div>
+            </div>
+
+            <div class="real-estate-link">
+                <h3></h3>
+                
+            </div>
+        </div>
+        <div class="form-section">
+            <h2>Sign up</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign up</button>
+                <p>Already have an account? <a href="{% url 'myapp:login'%}">Log in</a></p>
+            </form>
+            <div class="divider">OR</div>
+            <div class="social-buttons">
+                <button class="google">Continue with Google</button>
+                <button class="facebook">Continue with Facebook</button>
+                <button class="apple">Continue with Apple</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

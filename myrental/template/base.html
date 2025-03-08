@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}realtor.com® | Homes for Sale, Apartments{% endblock %}</title>
+    <link rel="icon" href="https://static.rdc.moveaws.com/favicon.ico">
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'rental.css' %}">
+    {% block css %}
+    
+    {% endblock css %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img width="142" height="46" src="https://static.rdc.moveaws.com/rdc-ui/logos/logo-brand.svg">
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'myapp:buy' %}">Buy</a></li>
+            <li><a href="{% url 'myapp:sell' %}">Sell</a></li>
+            <li><a href="{% url 'myapp:rent' %}">Rent</a></li>
+            <li><a href="{% url 'myapp:home' %}">Home</a></li>
+            <li><a href="{% url 'myapp:my_listings' %}">Home value</a></li>
+        </ul>
+        <div class="auth-links">
+            <a href="{% url 'myapp:saved_items' %}"><i class="fa-regular fa-heart"></i></a>
+            <a href="{% url 'myapp:login' %}"><i class="fa-regular fa-user"></i></a>
+            <a href="{% url 'myapp:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+    </nav>
+    
+    
+    
+    <!-- Content Block -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer or other common elements can go here -->
+
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/realtor" target="_blank">
+                    <img src="../static/facebbok.jpg" alt="Facebook" style="cursor: pointer;">
+                </a>
+                <a href="https://x.com/REALTORdotcom" target="_blank">
+                    <img src="../static/twitter.jpg" alt="X (Twitter)" style="cursor: pointer;">
+                </a>
+                <a href="https://www.linkedin.com/company/realtor-com/" target="_blank">
+                    <img src="../static/indeed.jpg" alt="LinkedIn" style="cursor: pointer;">
+                </a>
+                <a href="https://www.instagram.com/realtordotcom/?hl=en" target="_blank">
+                    <img src="../static/insta.jpg" alt="Instagram" style="cursor: pointer;">
+                </a>
+                <a href="https://www.pinterest.com/realtordotcom/" target="_blank">
+                    <img src="../static/pintrest.jpg" alt="Pinterest" style="cursor: pointer;">
+                </a>
+                <a href="https://www.youtube.com/user/RealtorDotCom" target="_blank">
+                    <img src="../static/youtube.jpg" alt="YouTube" style="cursor: pointer;">
+                </a>
+            </div>
+
+            <!-- Partner Logos -->
+            <div id="partners">
+                <a href="https://www.houselogic.com/?cid=eo_rl_rcom" class="photo">
+                    <img src="../static/first.svg" alt="House Logic">
+                </a>
+                <a href="https://www.get.realtor/?cid=dis_TLD0427" class="photo">
+                    <img src="../static/secoend.svg" alt="Get Realtor">
+                </a>
+            </div>
+
+            <!-- Footer Links -->
+            <ul class="footer-links">
+                <li><a href="#About Us">About Us</a></li>
+                <li><a href="#Careers">Careers</a></li>
+                <li><a href="#Accessibility">Accessibility</a></li>
+                <li><a href="#Feedback">Feedback</a></li>
+                <li><a href="#Media Room">Media Room</a></li>
+                <li><a href="#Ad Choice">Ad Choice</a></li>
+                <li><a href="#Advertise with Us">Advertise with Us</a></li>
+                <li><a href="#Agent Support">Agent Support</a></li>
+                <li><a href="#Privacy">Privacy</a></li>
+                <li><a href="#Terms">Terms</a></li>
+                <li><a href="#Home Made">Home Made</a></li>
+                <li><a href="#Tech Blog">Tech Blog</a></li>
+                <li><a href="#Sitemap">Sitemap</a></li>
+                <li><a href="#Do Not Sell or Share My Personal Information">Do Not Sell or Share My Personal Information</a></li>
+            </ul>
+
+            <!-- App Download Section -->
+            
+            <h1>Get the App</h1>
+            <div class="footer-logos">
+                <a href="https://www.realtor.com/mobile/?source_caller=ui&cid=dsp_smart_banner_global_footer">
+                    <img src="../static/google play.svg" alt="Google Play">
+                </a>
+                <a href="https://www.realtor.com/mobile/?source_caller=ui&cid=dsp_smart_banner_global_footer">
+                    <img src="../static/app store.svg" alt="App Store">
+                </a>
+            </div>
+
+            <!-- Footer Bottom Text -->
+            <div class="footer-bottom-text">
+                &copy; 1995-2025 National Association of REALTORS and Move, Inc. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'rental.js' %}"></script>
+</body>
+</html>

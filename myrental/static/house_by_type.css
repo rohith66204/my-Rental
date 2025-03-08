@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #333;
+  }
+  
+  /* Houses List Container */
+  .houses-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* House Item Card */
+  .house-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    text-align: center;
+  }
+  
+  .house-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .house-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .house-item h2 {
+    font-size: 1.5rem;
+    margin: 15px 0 10px;
+    color: #222;
+  }
+  
+  .house-item p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* View Details Button */
+  .btn {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Scroll Arrows (if needed) */
+  .scroll-arrow {
+    background: #ccc;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .scroll-arrow:hover {
+    background: #999;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .scroll-arrow:disabled {
+    background: #eee;
+    color: #ccc;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+  }
+  
+  /* Left arrow positioning */
+  .scroll-arrow:first-child {
+    left: -20px;
+  }
+  
+  /* Right arrow positioning */
+  .scroll-arrow:last-child {
+    right: -20px;
+  }
+  
+  /* Container for Scroll Arrows */
+  .house-container {
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+  }

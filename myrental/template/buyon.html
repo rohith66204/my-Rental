@@ -1,0 +1,170 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ obj.housename }} Details</title>
+    <link rel="stylesheet" href="{% static 'buyon.css' %}">
+    
+    <!-- FancyBox Stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Real Estate</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="house-detail">
+            <div class="main-image-container">
+                {% if obj.image %}
+                    <img src="{{ obj.image.url }}" alt="{{ obj.housename }}" class="main-house-image">
+                {% else %}
+                    <img src="{% static 'images/default_house_image.jpg' %}" alt="Default Image" class="main-house-image">
+                {% endif %}
+            </div>
+
+            <div class="house-info">
+                <h1>{{ obj.housename }}</h1>
+                <p>Price: ${{ obj.price }}</p>
+                <p>Type: {{ obj.house_type }}</p>
+                <p>Bedrooms: {{ obj.bedrooms }}</p>
+                <p>Bathrooms: {{ obj.bathrooms }}</p>
+                <p>Location: {{ obj.location }}</p>
+                <p>Description: {{ obj.description }}</p>
+            </div>
+
+            <div class="additional-info">
+                <h2>Images</h2>
+                <div class="image-gallery">
+                    <!-- Main Image -->
+                    <div class="image-item">
+                        <a href="{{ obj.image.url }}" data-fancybox="gallery" data-caption="Main Image">
+                            <img src="{{ obj.image.url }}" alt="Main Image" class="house-room-image">
+                        </a>
+                    </div>
+
+                    <!-- Additional Images -->
+                    {% if obj.outside_image %}
+                    <div class="image-item">
+                        <a href="{{ obj.outside_image.url }}" data-fancybox="gallery" data-caption="Outside Image">
+                            <img src="{{ obj.outside_image.url }}" alt="Outside Image" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.livingroom_image %}
+                    <div class="image-item">
+                        <a href="{{ obj.livingroom_image.url }}" data-fancybox="gallery" data-caption="Living Room Image">
+                            <img src="{{ obj.livingroom_image.url }}" alt="Living Room Image" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.bedroom_image %}
+                    <div class="image-item">
+                        <a href="{{ obj.bedroom_image.url }}" data-fancybox="gallery" data-caption="Bedroom Image">
+                            <img src="{{ obj.bedroom_image.url }}" alt="Bedroom Image" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.kitchen_image %}
+                    <div class="image-item">
+                        <a href="{{ obj.kitchen_image.url }}" data-fancybox="gallery" data-caption="Kitchen Image">
+                            <img src="{{ obj.kitchen_image.url }}" alt="Kitchen Image" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.bathroom_image %}
+                    <div class="image-item">
+                        <a href="{{ obj.bathroom_image.url }}" data-fancybox="gallery" data-caption="Bathroom Image">
+                            <img src="{{ obj.bathroom_image.url }}" alt="Bathroom Image" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.additional_image1 %}
+                    <div class="image-item">
+                        <a href="{{ obj.additional_image1.url }}" data-fancybox="gallery" data-caption="Additional Image 1">
+                            <img src="{{ obj.additional_image1.url }}" alt="Additional Image 1" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if obj.additional_image2 %}
+                    <div class="image-item">
+                        <a href="{{ obj.additional_image2.url }}" data-fancybox="gallery" data-caption="Additional Image 2">
+                            <img src="{{ obj.additional_image2.url }}" alt="Additional Image 2" class="house-room-image">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="usage-history">
+                    <h2>Usage History</h2>
+                    <ul>
+                        {% for usage in usage_history %}
+                            <li>
+                                {{ usage.user }} - {{ usage.starting_year }} to {{ usage.ending_year }} - ${{ usage.price }}
+                            </li>
+                        {% empty %}
+                            <li>No usage history available.</li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                </div>
+
+            <a href="{% url 'myapp:buy' %}" class="back-btn">Back to House Listings</a>
+            <!-- buyon.html -->
+            <!-- <a href="{% url 'myapp:search_results' obj.location %}" class="btn btn-secondary">Back to Search Results</a> -->
+        </div>
+    </div>
+
+    <!-- buyon.html -->
+        <div class="contact-agent-form">
+            <h2>Contact Agent</h2>
+            {% if submitted %}
+            <div class="success-message">
+                <h3>Thank you for your interest!</h3>
+                <p>A Realtor.com coordinator will call you shortly</p>
+                <p>We can connect you directly with a local real estate agent who can answer questions and schedule tours.</p>
+                <p>To connect right away, call (555) 123-4567</p>
+            </div>
+            {% else %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="email-agent-btn">Email Agent</button>
+            </form>
+            {% endif %}
+        </div>
+    
+    <!-- jQuery and FancyBox Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    
+    <!-- Initialize FancyBox -->
+    <script>
+        $(document).ready(function() {
+            // Initialize FancyBox on all links with class 'lightbox' in the gallery
+            $('[data-fancybox="gallery"]').fancybox({
+                buttons: [
+                    'zoom',
+                    'slideShow',
+                    'thumbs',
+                    'close'
+                ],
+                loop: true, // Allow looping through images
+                protect: true // Prevent image download
+            });
+        });
+    </script>
+
+</body>
+</html>

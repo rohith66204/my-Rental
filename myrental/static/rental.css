@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem 2rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.auth-links a {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background: url(../static/hp-hero-desktop-xl.webp) no-repeat center center/cover;
+    height: 50vh;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    width: 90%;
+    max-width: 40rem;
+    margin-top: 1rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    margin-right: 1rem;
+}
+
+.search-bar button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #333;
+}
+
+/* Selling Section */
+.selling {
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 75rem;
+}
+
+.container2, .container3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.img {
+    width: 100%;
+    max-width: 15rem;
+    height: 10rem;
+    border-radius: 0.5rem;
+}
+
+.buttons {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.buttons:hover {
+    background-color: black;
+    color: white;
+}
+
+#firstselling, #secondselling, #thirdselling,
+#firstbuying, #secondbuying, #thirdbuying,
+#firstrenting, #secondrenting, #thirdrenting {
+    border: 1px solid black;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 18rem;
+    margin: 0.5rem 0;
+}
+
+/* Container 4 - Text Overlay */
+.container4 {
+    position: relative;
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.background-image {
+    width: 100%;
+    height: 50vh;
+    min-height: 20rem;
+    object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 0.125rem 0.125rem 0.3125rem black;
+    text-align: center;
+}
+
+.text-overlay h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.text-overlay p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.text-overlay .button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+.text-overlay .button:hover {
+    background-color: rgb(187, 182, 182);
+    color: black;
+    border: 1px solid black;
+}
+
+/* Container 5 - Loan Section */
+.container5 {
+    width: 100%;
+    max-width: 75rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.image-section {
+    flex: 1;
+    min-width: 18rem;
+    height: 20rem;
+    background-image: url('../../assets/image/need\ home\ loan.avif');
+    background-size: cover;
+    background-position: center;
+}
+
+.text-section {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-section h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-section p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.text-section .button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+/* Footer */
+.container7 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+}
+
+.logo1, .column {
+    flex: 1;
+    min-width: 12rem;
+    margin: 1rem;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 1rem;
+}
+
+.column ul li a {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 48rem) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .container2, .container3 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-overlay p {
+        font-size: 1.2rem;
+    }
+
+    .container5 {
+        flex-direction: column;
+    }
+
+    .image-section {
+        height: 15rem;
+    }
+}
+
+@media (max-width: 30rem) {
+    .hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .text-overlay h2 {
+        font-size: 1rem;
+    }
+
+    .text-overlay p {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+}
+
+
+
+/* Resetting default margin and padding */
+
+/* Footer Styling */
+.footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.footer h1 {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Social Media Links Section */
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links a img {
+    width: 45px;
+    /* height: 50px; */
+    background-color: white;
+    border-radius: 50%;
+    outline: 12px solid white;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* Footer Links Section */
+.footer-links {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+.footer-links a {
+    color: #ffffff;
+    font-size: 30x;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #00bcd4;
+    text-decoration: underline;
+}
+
+/* Partner Logos Section */
+#partners {
+    margin: 20px 0;
+}
+
+#partners a {
+    margin: 0 15px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+#partners a img {
+    width: 160px;
+    height: auto;
+}
+
+#partners a:hover {
+    transform: scale(1.1);
+}
+
+/* App Download Section */
+.footer-logos {
+    margin: 30px 0;
+}
+
+.footer-logos a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-logos a img {
+    width: 150px;
+    height: auto;
+}
+
+.footer-logos a:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Bottom Text */
+.footer-bottom-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .social-links a img,
+    #partners a img {
+        width: 25px;
+    }
+
+    .footer-logos a img {
+        width: 120px;
+    }
+
+    .footer h1 {
+        font-size: 20px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'my_listings.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="header-container">
+    <h1>My Listings</h1>
+    <a href="{% url 'myapp:view_inquiries' %}" class="view-inquiries-btn">View Inquiries</a>
+</div>
+
+{% if houses %}
+    <div class="listings-container">
+        {% for house in houses %}
+            <div class="listing">
+                <div>
+                    <img src="{{ house.image.url }}" alt="{{ house.housename }}">
+                </div>
+                <div>
+                    <ul><b>{{ house.housename }}</b></ul>
+                    <h2><b>{{ house.price }}</b></h2>
+                    
+                    <p>{{ house.house_type }}</p>
+                    <p>{{ house.location }}</p>
+
+                    <!-- Centered View Details Button -->
+                    <div class="btn-container">
+                        <a href="{% url 'myapp:buyon' house.id %}" class="btn btn-primary">View Details</a>
+                        <form action="{% url 'myapp:delete_house' house.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't listed any houses for sale yet.</p>
+{% endif %}
+
+
+{% endblock %}

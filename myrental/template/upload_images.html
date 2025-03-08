@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Upload Images & Property History for {{ house.housename }}</h1>
+
+    <!-- Upload Image Form -->
+    <h2>Upload Images</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="image">Select Image:</label>
+        <input type="file" name="image" required><br>
+
+        <label for="room_type">Room Type:</label>
+        <select name="room_type" required>
+            <option value="kitchen">Kitchen</option>
+            <option value="bedroom">Bedroom</option>
+            <option value="living_room">Living Room</option>
+        </select><br>
+
+        <button type="submit" name="upload_image">Upload Image</button>
+    </form>
+
+    <!-- Uploaded Images Section -->
+    <h2>Uploaded Images</h2>
+    {% for img in images %}
+        <div>
+            <img src="{{ img.image.url }}" style="width:200px;height:150px;">
+            <p>{{ img.room_type }}</p>
+        </div>
+    {% empty %}
+        <p>No images uploaded yet.</p>
+    {% endfor %}
+
+    <hr>
+
+    <!-- Upload Property History Form -->
+    <h2>Add Property History</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="event">Event:</label>
+        <input type="text" name="event" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" required><br>
+
+        <button type="submit" name="upload_history">Add History</button>
+    </form>
+
+    <!-- Property History Section -->
+    <h2>Property History</h2>
+    {% for history in history_records %}
+        <div>
+            <p><strong>{{ history.event }}</strong> - {{ history.date }}</p>
+        </div>
+    {% empty %}
+        <p>No history records available.</p>
+    {% endfor %}
+
+{% endblock %}
