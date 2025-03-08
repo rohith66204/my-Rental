@@ -29,7 +29,7 @@ AUTH_USER_MODEL = 'myapp.sigin'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+# ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', '.vercel.app')]
 SECRET_KEY = 'django-insecure-wt4r&83c)&h27)k2x-m%kn3i_s^w9aez97pcx$9l_8lpobxw0_'
 
 # Application definition
@@ -129,7 +129,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 STATIC_URL = 'static/'
 MEDIA_URL='media/'
 STATICFILES_DIRS=[BASE_DIR/'static']
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 

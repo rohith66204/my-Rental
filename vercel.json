@@ -5,23 +5,23 @@
       "src": "myrental/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
-    },
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "static"
+        "maxLambdaSize": "250mb",
+        "includeFiles": [
+          "myrental/**",
+          "static/**",
+          "templates/**"
+        ]
       }
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "myrental/wsgi.py"
     }
-  ],
-  "outputDirectory": "static"
+  ]
 }
