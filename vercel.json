@@ -1,20 +1,19 @@
 {
-    "version": 2,
-    "builds": [
+  "version": 2,
+  "builds": [
       {
-        "src": "myrental/wsgi.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "15mb",
-          "runtime": "python3.9"
-        }
+          "src": "myrental/manage.py",
+          "use": "@vercel/python",
+          "config": {
+              "maxLambdaSize": "15mb",
+              "runtime": "python3.9"
+          }
       }
-    ],
-    "routes": [
+  ],
+  "routes": [
       {
-        "src": "/(.*)",
-        "dest": "myrental/wsgi.py"
+          "src": "/(.*)",
+          "dest": "myrental/manage.py"
       }
-    ],
-    "outputDirectory": "static"
+  ]
 }

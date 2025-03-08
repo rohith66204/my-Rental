@@ -4,10 +4,15 @@ charset-normalizer==3.4.1
 cloudinary==1.42.2
 Django==5.1.6
 django-cloudinary-storage==0.3.0
+gunicorn==23.0.0
 idna==3.10
 mysqlclient==2.2.7
+numpy==2.2.3
+packaging==24.2
+pandas==2.2.3
 pillow==11.1.0
-PyMySQL==1.1.1
+PyMySQL==1.0.2
+python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2025.1
 requests==2.32.3
@@ -16,4 +21,6 @@ six==1.17.0
 sqlparse==0.5.2
 tzdata==2024.2
 urllib3==2.3.0
+vercel==0.2.1
+waitress==3.0.2
 whitenoise==6.9.0
